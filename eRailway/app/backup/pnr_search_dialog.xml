@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center">
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/input_layout"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<SearchView-->
+            <!--android:id="@+id/searchView"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="3"-->
+            <!--android:background="#fff"-->
+            <!--android:iconifiedByDefault="false"-->
+            <!--android:inputType="number"-->
+            <!--android:layout_height="wrap_content">-->
+        <!--</SearchView>-->
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:id="@+id/pnrEditText"
+        android:layout_weight="3"/>
+
+    <TextView
+            android:id="@+id/search_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Search"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:textStyle="italic"/>
+    <!--</LinearLayout>-->
+
+    <!--<EditText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:inputType="number"-->
+        <!--android:ems="10"-->
+        <!--android:id="@+id/editText"-->
+        <!--android:layout_weight="1"/>-->
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="#ffffff"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingBottom="1sp"-->
+    <!--android:paddingLeft="5sp"-->
+    <!--android:paddingRight="5sp">-->
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/colorPrimary"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+<!--</RelativeLayout>-->
