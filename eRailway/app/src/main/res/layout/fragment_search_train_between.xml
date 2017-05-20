@@ -55,8 +55,7 @@
             android:layout_margin="5dp"
             android:background="#fff"
             app:ms_arrowSize="16dp"
-            app:ms_floatingLabelText="Qouta"
-            app:ms_hint="Quota"
+            app:ms_floatingLabelText="Quota"
             app:ms_baseColor="@color/colorPrimary"
             app:ms_multiline="true" />
 
