@@ -52,6 +52,8 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 	private MaterialSpinner quotaSpinner;
 	private EditText dateEdittext;
 	private Button searchTrainButton;
+	private String mSelectedSource;
+	private String mSelectedDestination;
 
 	String myFormat = "dd - MMM - yyyy";
 	SimpleDateFormat sdf = new SimpleDateFormat(myFormat,java.util.Locale.getDefault());
@@ -105,6 +107,7 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 			}
 		});
 
+
 		SearchAdapter searchAdapter1 = new MySearchAdapter(mContext, suggestionsList);
 		searchAdapter1.addOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -126,7 +129,6 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 		quotaSpinner = (MaterialSpinner) view.findViewById(R.id.spinner1);
 		quotaSpinner.setPaddingSafe(0, 0, 0, 0);
 		quotaSpinner.setAdapter(adapter);
-		quotaSpinner.setSelection(1);
 
 		dateEdittext = (EditText) view.findViewById(R.id.editDatePicker);
 
@@ -169,10 +171,26 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 		return view;
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		Log.i(TAG, "onResume");
+		if (mSelectedSource!= null && !mSelectedSource.isEmpty()) {
+			mSourceSearchView.setQuery(mSelectedSource, true);
+			mSourceSearchView.close(true);
+		}
+		if (mSelectedDestination !=null && !mSelectedDestination.isEmpty()) {
+			mDestinationSearchView.setQuery(mSelectedDestination, true);
+			mDestinationSearchView.close(true);
+		}
+	}
+
 	private void handleSearchTrainClicked() {
 
-		String source = mSourceSearchView.getQuery().toString();
-		String destination = mDestinationSearchView.getQuery().toString();
+		mSelectedSource  = mSourceSearchView.getQuery().toString();
+		mSelectedDestination = mDestinationSearchView.getQuery().toString();
+		String source = mSelectedSource;
+		String destination = mSelectedDestination;
 		final String quota = (String) quotaSpinner.getSelectedItem();
 		if(TextUtils.isEmpty(source)) {
 			showErrorText("Please choose Source");
