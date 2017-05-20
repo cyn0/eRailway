@@ -193,6 +193,10 @@ public class WebviewFragment extends BaseFragment {
 		anim.setDuration(500).start();
 	}
 
+	public void scrollToCurrent(){
+		mWebView.getSettings().setJavaScriptEnabled(true);
+		mWebView.loadUrl("javascript:scrollToCurrent()");
+	}
 
 }
 
