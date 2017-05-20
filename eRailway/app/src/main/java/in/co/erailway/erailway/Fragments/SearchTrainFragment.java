@@ -300,7 +300,7 @@ public class SearchTrainFragment extends BaseFragment {
 			@Override
 			public void onClick(View view) {
 				if(mWebviewFragment != null) {
-					mWebviewFragment.scrollToElement("current_position");
+					mWebviewFragment.scrollToCurrent();
 				}
 			}
 		});
