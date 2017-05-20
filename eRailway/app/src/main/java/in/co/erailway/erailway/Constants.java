@@ -5,8 +5,8 @@ package in.co.erailway.erailway;
  */
 
 public class Constants {
-//	public static String HOST =  "https://erailway.co.in";
-	public static String HOST =  "http://52.66.118.127";
+	public static String HOST =  "https://erailway.co.in";
+//	public static String HOST =  "http://52.66.118.127";
 
 	public static String URI_TRAIN_BETWEEN = "/trains-between";
 	public static String URI_PNR_STATUS = "/pnr-status";

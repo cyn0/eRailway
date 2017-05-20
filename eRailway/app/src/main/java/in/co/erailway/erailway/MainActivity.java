@@ -3,6 +3,7 @@ package in.co.erailway.erailway;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -260,12 +261,14 @@ public class MainActivity extends AppCompatActivity
 
 			return true;
 		} else if (id == R.id.nav_send) {
-			Intent email = new Intent(Intent.ACTION_SEND);
-			email.putExtra(Intent.EXTRA_EMAIL, new String[]{"team@erailway.co.in"});
-			email.putExtra(Intent.EXTRA_SUBJECT, "Hey! I liked the app");
-			email.putExtra(Intent.EXTRA_TEXT, "");
-			email.setType("message/rfc822");
-			startActivity(Intent.createChooser(email, "Choose an Email client :"));
+			Intent email = new Intent(Intent.ACTION_SENDTO);
+			final String recepientEmail = "team@erailway.co.in";
+//			email.putExtra(Intent.EXTRA_EMAIL, new String[]{recepientEmail});
+//			email.putExtra(Intent.EXTRA_SUBJECT, "Hey! I liked the app");
+//			email.putExtra(Intent.EXTRA_TEXT, "");
+			email.setData(Uri.parse("mailto:" + recepientEmail));
+//			email.setType("message/rfc822");
+			startActivity(Intent.createChooser(email, "Send E-mail via"));
 
 			return true;
 		}

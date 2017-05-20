@@ -1,10 +1,11 @@
 package in.co.erailway.erailway;
+
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.github.paolorotolo.appintro.AppIntro;
+import com.github.paolorotolo.appintro.AppIntroFragment;
 
 
 public class IntroActivity extends AppIntro{
@@ -35,12 +36,18 @@ public class IntroActivity extends AppIntro{
 //        // NOTE: you will probably need to ask VIBRATE permisssion in Manifest.
 //        setVibrate(true);
 //        setVibrateIntensity(30);
-		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+		final String title1 = "Hey There!!";
+		final String description1 = "Looking for Train Info?! eRailway provides you with live and detailed info about trains to make your life easy and aweeesome!!";
+		final String title2 = "Live Status";
+		final String description2 = "Looking for Train Info?! RailInfo provides you with live and detailed info about trains to make your life easy and aweeesome!!";
+		final String title3 = "PNR Status";
+		final String description3 = "Looking for Train Info?! RailInfo provides you with live and detailed info about trains to make your life easy and aweeesome!!";
 		addSlide(SampleSlide.newInstance(R.layout.intro));
-        addSlide(SampleSlide.newInstance(R.layout.intro3));
-        addSlide(SampleSlide.newInstance(R.layout.intro4));
-        showSkipButton(false);
-        setZoomAnimation();
+		addSlide(AppIntroFragment.newInstance(title1, description1, R.drawable.ic_slide1, Color.parseColor("#33B5E5")));
+		addSlide(AppIntroFragment.newInstance(title2, description1, R.drawable.ic_slide1, Color.parseColor("#5C6BC0")));
+		addSlide(AppIntroFragment.newInstance(title3, description1, R.drawable.ic_slide1, Color.parseColor("#4CAF50")));
+		showSkipButton(false);
+		setFadeAnimation();
     }
 
     @Override

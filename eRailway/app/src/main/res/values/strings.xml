@@ -12,6 +12,17 @@
     <string name="no_internet_text">Not connected to internet!</string>
     <string name="error_text">Oops! Dr. Murphy was right.</string>
 
+    <string name="about_us_description">
+        On some random day, in a random cafe you see a bunch of nerdy guys who had lost their social life but with never ending thirst to create a better world, that would be us! \n
+        We, team of three losers, spent several nights surviving on a mug of coffee so that we could create a simple, reliable and materialistic railway info application just for you.\n
+        When we started, we were discouraged that how could we provide a better solution completing with big players in the market. But we know a very simple and materialistic design can make us stand apart.
+        \n\n
+        Jon Snow\n
+        Bahubali\n
+        Black Mamba\n
+
+    </string>
+
     <string name="banner_ad_unit_id">ca-app-pub-1536608663458781/7786163551</string>
 
 </resources>
