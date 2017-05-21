@@ -30,6 +30,7 @@ import com.lapism.searchview.SearchAdapter.OnItemClickListener;
 import com.lapism.searchview.SearchItem;
 import com.lapism.searchview.SearchView;
 import com.lapism.searchview.SearchView.OnMenuClickListener;
+import com.lapism.searchview.SearchHistoryTable;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -58,6 +59,7 @@ public class SearchTrainFragment extends BaseFragment {
 	private SegmentedGroup mSegmentedGroup;
 
 	private WebviewFragment mWebviewFragment;
+	private SearchHistoryTable mHistoryDatabase;
 	/*
 	I used this same fragment for gettting train number as input for both Live status and train route :P
 	 */
@@ -118,6 +120,7 @@ public class SearchTrainFragment extends BaseFragment {
 		});
 		mSearchView.setVoice(false);
 		mSearchView.setTextStyle(R.drawable.textlines);
+		mHistoryDatabase = new SearchHistoryTable(getContext());
 
 		List<SearchItem> suggestionsList = new ArrayList<>();
 		for(String train : trains){
@@ -125,6 +128,7 @@ public class SearchTrainFragment extends BaseFragment {
 		}
 
 		SearchAdapter searchAdapter = new SearchAdapter(mContext, suggestionsList);
+		searchAdapter.setDatabaseKey(1);
 		searchAdapter.addOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(View view, int position) {
@@ -251,7 +255,7 @@ public class SearchTrainFragment extends BaseFragment {
 
 	private void handleTrainSelected(String uri) {
 		AppUtils.hideSoftKeyboard(getActivity());
-
+		mHistoryDatabase.addItem(new SearchItem(uri), 1);
 		if(mIsLiveStatus) {
 			TrainStartDate selectedDate = TrainStartDate.TODAY; //(TrainStartDate)mDateSpinner.getSelectedItem();
 			DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
