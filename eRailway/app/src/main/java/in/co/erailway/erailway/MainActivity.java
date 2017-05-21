@@ -37,8 +37,8 @@ import com.tomer.fadingtextview.FadingTextView;
 import in.co.erailway.erailway.Animation.MyBounceAnimation;
 import in.co.erailway.erailway.AppVersion.AppVersionCheck;
 import in.co.erailway.erailway.DBUtil.SQLDatabaseHandler;
+import in.co.erailway.erailway.Fragments.AboutUsFragment;
 import in.co.erailway.erailway.Fragments.HomeFragment;
-import in.co.erailway.erailway.Fragments.HomeFragment1;
 import in.co.erailway.erailway.Fragments.PnrFragment;
 import in.co.erailway.erailway.Fragments.PnrListFragment;
 import in.co.erailway.erailway.Fragments.SearchTrainBetweenFragment;
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity
 				}
 			});
 
-			setFirstTimeStatus(false);
 			Intent i = new Intent(mContext, IntroActivity.class);
 			startActivity(i);
 			finish();
@@ -108,18 +107,18 @@ public class MainActivity extends AppCompatActivity
 		});
 
 		///my code
-		if(!HttpHandler.hasWorkingInternet(mContext)) {
-			hasInternet = false;
-			showHideWebview(false);
-			return;
-		}
-
 		mAdView = (AdView) findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.
 				Builder()
 //				.addTestDevice("ED322D8FB650DDE8C4DFBCCE86AE84EB")
 				.build();
 		mAdView.loadAd(adRequest);
+
+		if(!HttpHandler.hasWorkingInternet(mContext)) {
+			hasInternet = false;
+			showHideWebview(false);
+			return;
+		}
 
 
 		//version
@@ -156,7 +155,7 @@ public class MainActivity extends AppCompatActivity
 		} else if (fragment instanceof PnrFragment) {
 			goToPreviousScreen();
 
-		} else if (fragment instanceof HomeFragment1) {
+		} else if (fragment instanceof HomeFragment) {
 			if (doubleBackToExitPressedOnce) {
 				//wtf?!
 				//super.onBackPressed();
@@ -179,28 +178,6 @@ public class MainActivity extends AppCompatActivity
 
 		}
 
-
-//		if(mFragmentManager.getBackStackEntryCount() > 0){
-//			mFragmentManager.popBackStackImmediate();
-//
-//		} else {
-//
-//			if (doubleBackToExitPressedOnce) {
-//				super.onBackPressed();
-//				return;
-//			}
-//
-//			this.doubleBackToExitPressedOnce = true;
-//			Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-//
-//			new Handler().postDelayed(new Runnable() {
-//
-//				@Override
-//				public void run() {
-//					doubleBackToExitPressedOnce=false;
-//				}
-//			}, 2000);
-//		}
 	}
 
 	@Override
@@ -240,7 +217,7 @@ public class MainActivity extends AppCompatActivity
 		Fragment fragment = null;
 		int id = item.getItemId();
 		if(id == R.id.nav_home){
-			fragment = HomeFragment1.newInstance();
+			fragment = HomeFragment.newInstance();
 
 		} else if (id == R.id.nav_search_train) {
 			fragment = SearchTrainBetweenFragment.newInstance();
@@ -255,7 +232,7 @@ public class MainActivity extends AppCompatActivity
 			fragment = SearchTrainFragment.newInstance(false);
 
 		} else if (id == R.id.nav_share) {
-			String message =  "Hey! I found this awesome rail info App - eRailway. It gives Train live status, PNR status and much more. Get it here : https://tinyurl.com/erailway";
+			String message =  "Hey! I found this awesome rail info App - eRailway. It gives Train live status, PNR status and much more. Get it here : https://erailway.co.in/app";
 
 			AppUtils.shareText(this, message);
 
@@ -271,6 +248,8 @@ public class MainActivity extends AppCompatActivity
 			startActivity(Intent.createChooser(email, "Send E-mail via"));
 
 			return true;
+		} else if(id == R.id.nav_about){
+			fragment = AboutUsFragment.newInstance();
 		}
 
 		mFragmentManager

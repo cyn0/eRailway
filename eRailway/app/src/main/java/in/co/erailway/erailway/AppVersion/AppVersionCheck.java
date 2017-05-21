@@ -123,8 +123,9 @@ public class AppVersionCheck {
 
 	private static void redirectToPlayStore(final Context context) {
 		try {
+			//https://play.google.com/store/apps/details?id=in.co.erailway.erailway
 			//activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+activity.getPackageName())));
-			context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.whatsapp")));
+			context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=in.co.erailway.erailway")));
 		} catch (ActivityNotFoundException e) {
 
 			context.startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));

@@ -1,6 +1,8 @@
 package in.co.erailway.erailway;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -37,15 +39,15 @@ public class IntroActivity extends AppIntro{
 //        setVibrate(true);
 //        setVibrateIntensity(30);
 		final String title1 = "Hey There!!";
-		final String description1 = "Looking for Train Info?! eRailway provides you with live and detailed info about trains to make your life easy and aweeesome!!";
+		final String description1 = "Looking for Train Info?! eRailway provides you with live and detailed info about Trains to make your life simple and aweeesome!!";
 		final String title2 = "Live Status";
-		final String description2 = "Looking for Train Info?! RailInfo provides you with live and detailed info about trains to make your life easy and aweeesome!!";
-		final String title3 = "PNR Status";
-		final String description3 = "Looking for Train Info?! RailInfo provides you with live and detailed info about trains to make your life easy and aweeesome!!";
+		final String description2 = "Worried whether your Train will reach on time? eRailway provides you with running status of Trains.";
+		final String title3 = "Train details, PNR Status and much more!";
+		final String description3 = "eRailway gives you current PNR status, details about Trains and Railway station. Let's get started!";
 		addSlide(SampleSlide.newInstance(R.layout.intro));
-		addSlide(AppIntroFragment.newInstance(title1, description1, R.drawable.ic_slide1, Color.parseColor("#33B5E5")));
-		addSlide(AppIntroFragment.newInstance(title2, description1, R.drawable.ic_slide1, Color.parseColor("#5C6BC0")));
-		addSlide(AppIntroFragment.newInstance(title3, description1, R.drawable.ic_slide1, Color.parseColor("#4CAF50")));
+		addSlide(AppIntroFragment.newInstance(title1, description1, R.drawable.boy_intro, Color.parseColor("#33B5E5")));
+		addSlide(AppIntroFragment.newInstance(title2, description2, R.drawable.live_icon, Color.parseColor("#5C6BC0")));
+		addSlide(AppIntroFragment.newInstance(title3, description3, R.drawable.intro_three, Color.parseColor("#4CAF50")));
 		showSkipButton(false);
 		setFadeAnimation();
     }
@@ -57,6 +59,7 @@ public class IntroActivity extends AppIntro{
 
     @Override
     public void onDonePressed() {
+		setFirstTimeStatus(false);
     	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		startActivity(intent);
 		finish();
@@ -70,4 +73,10 @@ public class IntroActivity extends AppIntro{
     public void onNextPressed() {
     }
 
+	public void setFirstTimeStatus(boolean status){
+		Context context = getApplicationContext();
+		SharedPreferences.Editor editor = context.getSharedPreferences(Constants.APP_SETTINGS, context.MODE_PRIVATE).edit();
+		editor.putBoolean(Constants.FIRST_TIME, status);
+		editor.commit();
+	}
 }

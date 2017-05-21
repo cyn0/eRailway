@@ -8,10 +8,6 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lapism.searchview.SearchAdapter;
 import com.lapism.searchview.SearchAdapter.OnItemClickListener;
@@ -44,8 +41,6 @@ import in.co.erailway.erailway.DBUtil.SQLDatabaseHandler;
 import in.co.erailway.erailway.MainActivity;
 import in.co.erailway.erailway.R;
 
-import static com.google.android.gms.internal.zzs.TAG;
-
 public class SearchTrainBetweenFragment extends BaseFragment {
 
 	private SearchView mSourceSearchView, mDestinationSearchView;
@@ -54,6 +49,7 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 	private Button searchTrainButton;
 	private String mSelectedSource;
 	private String mSelectedDestination;
+	List<SearchItem> mSuggestionsList;
 
 	String myFormat = "dd - MMM - yyyy";
 	SimpleDateFormat sdf = new SimpleDateFormat(myFormat,java.util.Locale.getDefault());
@@ -94,8 +90,8 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 //			suggestionsList.add(new SearchItem(station));
 //		}
 
-		List<SearchItem> suggestionsList = SQLDatabaseHandler.getSharedInstance(getContext()).getAllStationsAsSearchItem();
-		SearchAdapter searchAdapter = new MySearchAdapter(mContext, suggestionsList);
+		mSuggestionsList = SQLDatabaseHandler.getSharedInstance(getContext()).getAllStationsAsSearchItem();
+		SearchAdapter searchAdapter = new MySearchAdapter(mContext, mSuggestionsList);
 		searchAdapter.addOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(View view, int position) {
@@ -108,7 +104,7 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 		});
 
 
-		SearchAdapter searchAdapter1 = new MySearchAdapter(mContext, suggestionsList);
+		SearchAdapter searchAdapter1 = new MySearchAdapter(mContext, mSuggestionsList);
 		searchAdapter1.addOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(View view, int position) {
@@ -186,7 +182,7 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 	}
 
 	private void handleSearchTrainClicked() {
-
+		//To-DO. Too bad! Change everything below. Valid in a better way
 		mSelectedSource  = mSourceSearchView.getQuery().toString();
 		mSelectedDestination = mDestinationSearchView.getQuery().toString();
 		String source = mSelectedSource;
@@ -202,9 +198,21 @@ public class SearchTrainBetweenFragment extends BaseFragment {
 			showErrorText("Please select a quota from dropdown");
 			return;
 		}
-		Log.d(TAG, quota);
-		//https://erailway.co.in/trains-between/MAS-Chennai-Central-to-BCT-Mumbai-Central?quota=DP&date=2017-05-03
 
+		boolean validSource = false, validDestination = false;
+		for(SearchItem item : mSuggestionsList) {
+			String station = item.get_text().toString();
+			if (station.equals(mSelectedSource)) {
+				validSource = true;
+			} else if (station.equals(mSelectedDestination)) {
+				validDestination = true;
+			}
+		}
+
+		if(!validSource || !validDestination) {
+			Toast.makeText(mContext, "Enter a valid source and destination", Toast.LENGTH_LONG).show();
+			return;
+		}
 
 		//processing :( :(
 		source = source.replaceAll("[()]","").replaceAll(" ", "-");

@@ -24,11 +24,7 @@ import in.co.erailway.erailway.Constants.Titles;
 import in.co.erailway.erailway.ListAdapters.HomeListAdapter;
 import in.co.erailway.erailway.R;
 
-public class HomeFragment extends Fragment {
-
-	private final String fragmentTitle = "eRailway";
-	private final String TAG = "HomeFragment";
-	private Context mContext;
+public class HomeFragment extends BaseFragment {
 
 	private ListView mList;
 	private FragmentManager mFragmentManager;
@@ -50,15 +46,8 @@ public class HomeFragment extends Fragment {
 		mContext = getContext();
 		mFragmentManager = getFragmentManager();
 
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-		Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-		toolbar.setVisibility(View.VISIBLE);
-		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(fragmentTitle);
-
+		fragmentTitle = "eRailway";
+		TAG = "HomeFragment";
 	}
 
 	@Override

@@ -12,17 +12,26 @@
     <string name="no_internet_text">Not connected to internet!</string>
     <string name="error_text">Oops! Dr. Murphy was right.</string>
 
+    <!--<string name="about_us_description">-->
+        <!--On some random day, in a random cafe you see a bunch of nerdy guys who had lost their social life but with never ending thirst to create a better world, that would be us! \n-->
+        <!--We, team of three losers, spent several nights surviving on a mug of coffee so that we could create a simple, reliable and materialistic railway info application just for you.\n-->
+        <!--When we started, we were discouraged that how could we provide a better solution completing with big players in the market. But we know a very simple and materialistic design can make us stand apart.-->
+        <!--\n\n-->
+        <!--Jon Snow\n-->
+        <!--Bahubali\n-->
+        <!--Black Mamba\n-->
+
+    <!--</string>-->
+
     <string name="about_us_description">
-        On some random day, in a random cafe you see a bunch of nerdy guys who had lost their social life but with never ending thirst to create a better world, that would be us! \n
-        We, team of three losers, spent several nights surviving on a mug of coffee so that we could create a simple, reliable and materialistic railway info application just for you.\n
-        When we started, we were discouraged that how could we provide a better solution completing with big players in the market. But we know a very simple and materialistic design can make us stand apart.
+        It was a busy day on work when the phone beeped. Jay realised that he had to make it this time to his Mom\'s birthday. But planning a travel hadn\'t ever been easy for him.
+        \n\nJay is our dear friend and we decided to make trip planning on our Indian Railways to be seamless than ever.
+        \n\nWe know a very simple and materialiastic design that makes us stand apart.  We are constantly improvising on making life easy for railway commuters.
+        There are much more cool features coming soon.  Stay tuned!
         \n\n
-        Jon Snow\n
-        Bahubali\n
-        Black Mamba\n
+        - A Lannistor.
 
     </string>
-
     <string name="banner_ad_unit_id">ca-app-pub-1536608663458781/7786163551</string>
 
 </resources>

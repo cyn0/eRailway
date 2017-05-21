@@ -27,30 +27,30 @@
                     />
                 <!-- note that the leading "/" is required for pathPrefix-->
                 <!-- Accepts URIs that begin with "example://gizmos” -->
-                <data android:scheme="example"
-                      android:host="gizmos" />
+                <!--<data android:scheme="example"-->
+                      <!--android:host="gizmos" />-->
 
             </intent-filter>
         </activity>
 
-        <receiver android:name="widgetLayout.TrainLiveStatusWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
+        <!--<receiver android:name="widgetLayout.TrainLiveStatusWidget">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>-->
+            <!--</intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/train_live_status_widget_info"/>
-        </receiver>
-        <receiver android:name="widgetLayout.PnrStatusWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
+            <!--<meta-data-->
+                <!--android:name="android.appwidget.provider"-->
+                <!--android:resource="@xml/train_live_status_widget_info"/>-->
+        <!--</receiver>-->
+        <!--<receiver android:name="widgetLayout.PnrStatusWidget">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>-->
+            <!--</intent-filter>-->
 
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/pnr_status_widget_info"/>
-        </receiver>
+            <!--<meta-data-->
+                <!--android:name="android.appwidget.provider"-->
+                <!--android:resource="@xml/pnr_status_widget_info"/>-->
+        <!--</receiver>-->
 
         <activity
             android:name=".SplashActivity"

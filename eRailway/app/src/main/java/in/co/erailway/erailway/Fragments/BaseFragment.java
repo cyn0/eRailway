@@ -43,7 +43,7 @@ public class BaseFragment extends Fragment {
 		mainActivity.getSupportActionBar().setTitle(fragmentTitle);
 
 		Fragment fragment = this;
-		if(fragment instanceof HomeFragment1
+		if(fragment instanceof HomeFragment
 				|| fragment instanceof PnrListFragment
 				|| fragment instanceof PnrFragment
 				|| fragment instanceof SearchTrainBetweenFragment) {

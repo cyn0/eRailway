@@ -239,19 +239,26 @@ public class SearchTrainFragment extends BaseFragment {
 	private void handleDateChanged(){
 		String uri = mSearchView.getQuery().toString();
 
-		//TO-DO please find a better way
-		for(String train : trains) {
-			if(uri.equals(train)) {
-				handleTrainSelected(uri);
-				break;
-			}
-		}
+		handleTrainSelected(uri);
 
 	}
 
 	private void handleTrainSelected(String uri) {
 		AppUtils.hideSoftKeyboard(getActivity());
 
+		boolean isValid = false;
+		//TO-DO please find a better way
+		for(String train : trains) {
+			if(uri.equals(train)) {
+				isValid = true;
+				break;
+			}
+		}
+
+		if(!isValid) {
+			Toast.makeText(mContext, "Enter a valid Train number or name", Toast.LENGTH_LONG).show();
+			return;
+		}
 		if(mIsLiveStatus) {
 			TrainStartDate selectedDate = TrainStartDate.TODAY; //(TrainStartDate)mDateSpinner.getSelectedItem();
 			DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
