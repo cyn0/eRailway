@@ -59,7 +59,7 @@ public class SearchTrainFragment extends BaseFragment {
 	private SegmentedGroup mSegmentedGroup;
 
 	private WebviewFragment mWebviewFragment;
-	private SearchHistoryTable mHistoryDatabase;
+	private SearchHistoryTable mHistoryDatabase ;
 	/*
 	I used this same fragment for gettting train number as input for both Live status and train route :P
 	 */
@@ -72,13 +72,14 @@ public class SearchTrainFragment extends BaseFragment {
 		return fragment;
 	}
 
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		mIsLiveStatus = getArguments().getBoolean("isLive");
 		mDrawer = (DrawerLayout) getActivity().findViewById(R.id.drawer_layout);
-
+		mHistoryDatabase = new SearchHistoryTable(getContext());
 		fragmentTitle = mIsLiveStatus ?  "Running Status"  : "Train Details";
 		TAG = "SearchTrainFragment";
 	}
@@ -120,7 +121,6 @@ public class SearchTrainFragment extends BaseFragment {
 		});
 		mSearchView.setVoice(false);
 		mSearchView.setTextStyle(R.drawable.textlines);
-		mHistoryDatabase = new SearchHistoryTable(getContext());
 
 		List<SearchItem> suggestionsList = new ArrayList<>();
 		for(String train : trains){
@@ -128,7 +128,6 @@ public class SearchTrainFragment extends BaseFragment {
 		}
 
 		SearchAdapter searchAdapter = new SearchAdapter(mContext, suggestionsList);
-		searchAdapter.setDatabaseKey(1);
 		searchAdapter.addOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(View view, int position) {
@@ -136,7 +135,7 @@ public class SearchTrainFragment extends BaseFragment {
 				String query = textView.getText().toString();
 				mSearchView.setQuery(query, true);
 				mSearchView.close(true);
-
+				mHistoryDatabase.addItem(new SearchItem(query));
 				handleTrainSelected(query);
 			}
 		});
@@ -255,7 +254,6 @@ public class SearchTrainFragment extends BaseFragment {
 
 	private void handleTrainSelected(String uri) {
 		AppUtils.hideSoftKeyboard(getActivity());
-		mHistoryDatabase.addItem(new SearchItem(uri), 1);
 		if(mIsLiveStatus) {
 			TrainStartDate selectedDate = TrainStartDate.TODAY; //(TrainStartDate)mDateSpinner.getSelectedItem();
 			DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
