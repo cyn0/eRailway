@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pnr_error_texts">
+        <item>Please wait while we split atom to fetch your PNR status!</item>
+        <item>Taking an atom with heavy nuclei, preparing to bombard it with a neutron..</item>
+        <item>Boooom! Booooom!!!</item>
+        <item>Sometimes, splitting an atom is easier than fetching PNR status from Indian Railways!!</item>
+        <item>This long?? Did you enter a valid PNR? or Indian Railways server is down for maintenance.</item>
+        <item>Life is too short to wait this long... Good luck!</item>
+    </string-array>
+
+    <string-array name="delete_pnr_texts">
+        <item>Deleting your PNR status..</item>
+    </string-array>
+</resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "383425288709",
+    "firebase_url": "https://erailway-e9a58.firebaseio.com",
+    "project_id": "erailway-e9a58",
+    "storage_bucket": "erailway-e9a58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383425288709:android:df4d15c3a6220012",
+        "android_client_info": {
+          "package_name": "in.co.erailway.erailway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383425288709-4ssfqdcseq38lpqo8945fu3dgs060rcr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.co.erailway.erailway",
+            "certificate_hash": "39be240c609d117cbf4888c4e2ed7a5d70487457"
+          }
+        },
+        {
+          "client_id": "383425288709-747nd8vmii0rsrkemn7u6lru0u973u95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3qSaq8gB27pvufZjbCkA7OKIF82KbZBM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383425288709-747nd8vmii0rsrkemn7u6lru0u973u95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
